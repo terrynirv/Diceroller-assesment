@@ -1,8 +1,9 @@
 let rollButton = document.querySelector('#dice-roller')
-let showallButtin = document.querySelector('#show-all-results')
+let showallButtin = document.getElementById('show-all-results')
 let dieRolls = [] 
 let rollResults = document.querySelector('#total-results')  
 let allRollsElement = document.querySelector('#all-rolls')
+console.log(showallButtin)
 const dieQuant = document.querySelector('#dice')
 rollButton.addEventListener("click", function () {
         const die = dieQuant.value
@@ -16,12 +17,12 @@ rollButton.addEventListener("click", function () {
         rollResults = numberRolled +rollResults
         console.log(rollResults)           
     }
-    document.body.innerHTML += "Total: " + rollResults 
+    var textnode = document.createTextNode('Total: ' + rollResults); 
+    document.body.appendChild(textnode)
     console.log(dieRolls)
 })
 showallButtin.addEventListener("click", function () {
     let counter2 = 0
-    console.log('button')
     while (counter2 < dieRolls.length) {
         let newDiceString = '<li class="dice">' + dieRolls[counter2] + '</li>';
         allRollsElement.innerHTML += newDiceString;
